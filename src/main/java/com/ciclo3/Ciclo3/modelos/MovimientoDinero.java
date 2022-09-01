@@ -15,7 +15,7 @@ public class MovimientoDinero {
     private Empleado usuario;
 
     // Constructor
-    public MovimientoDinero(){
+    public MovimientoDinero() {
     }
 
     public MovimientoDinero(long monto, String concepto, Empleado usuario) {

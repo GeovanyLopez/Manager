@@ -16,25 +16,33 @@ public class EmpresaServicios {
     EmpresaRepositorio empresaRepositorio;
 
     // Metodo para listar las empresas usando metodos de jpaRepository
-    public List<Empresa> listarEmpresas(){
+    public List<Empresa> listarEmpresas() {
         List<Empresa> listaEmpresas = new ArrayList<>();
         // Recorremos el iterable y lo guarda en una lista
         empresaRepositorio.findAll().forEach(empresa -> listaEmpresas.add((Empresa) empresa));
-        return listaEmpresas ;
+        return listaEmpresas;
     }
 
     // Metodo que trae un objeto de tipo Empresa con el id
-    public Empresa obtenerEmpresaID(Integer id){
+    public Empresa obtenerEmpresaID(Integer id) {
         return (Empresa) empresaRepositorio.findById(id).get();
     }
+
     // Metodo para guardar o actualizar objetos de tipo empresa
-    public boolean saveUpdate(Empresa empresa){
+    public boolean saveUpdate(Empresa empresa) {
         Empresa emp = (Empresa) empresaRepositorio.save(empresa);
-        if(empresaRepositorio.findById(emp.getId()) != null){
+        if (empresaRepositorio.findById(emp.getId()) != null) {
             return true;
         }
         return false;
     }
 
-
+    // Metodo para eliminar una Empresa
+    public boolean eliminarEmpresa(Integer id) {
+        empresaRepositorio.deleteById(id);
+        if (obtenerEmpresaID(id) != null) {
+            return false;
+        }
+        return true;
+    }
 }

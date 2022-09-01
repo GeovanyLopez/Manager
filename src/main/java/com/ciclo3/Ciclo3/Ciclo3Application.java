@@ -9,12 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication (exclude = {SecurityAutoConfiguration.class})
-@RestController
+
 public class Ciclo3Application {
 
 	@GetMapping("/hello")
 	public String inicio(){
-
 		return "Saldremos vivos de esta...";
 	}
 
@@ -29,11 +28,12 @@ public class Ciclo3Application {
     public String test1(){
         Empleado empleado1 = new Empleado();
         empleado1.setNombreEmpleado("James Lopez Restrepo");
-
         return empleado1.getNombreEmpleado();
     }
 	public static void main(String[] args) {
 		SpringApplication.run(Ciclo3Application.class, args);
+
+
 
 	}
 

@@ -17,7 +17,8 @@ public class Empresa {
     private String NIT;
 
     // Constructor
-    public Empresa(){}
+    public Empresa() {
+    }
 
     public Empresa(String nombre, String direccion, String telefono, String NIT) {
         this.nombre = nombre;

@@ -18,9 +18,10 @@ public class Empleado {
     private String rol;
 
     // Constructor
-    public Empleado(){
+    public Empleado() {
 
     }
+
     public Empleado(String nombreEmpleado, String correo, Empresa empresa, String rol) {
         this.nombreEmpleado = nombreEmpleado;
         this.correo = correo;
