@@ -13,7 +13,7 @@
 
     <div class="container">
         <h1>Agregue aqui los datos</h1>
-
+        <br>
         <!--Creamos el formulario para llenar los datos de la Empresa y guardarlo en el objeto emp -->
         <form th:action="@{/GuardarEmpresa}" th:object="${emp}" method="post">
         <!--Campo para llenar nombre -->
@@ -64,7 +64,7 @@
             </div>
 
         </form>
-
+        <br>
         <!--Boton para regresar a la pagina anterior -->
         <a href="javascript:history.go(-1)" class="btn btn-info" role="button">Atras</a>
 

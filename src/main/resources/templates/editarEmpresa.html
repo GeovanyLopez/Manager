@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar empresa</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h1>Edite aqui los datos</h1>
+    <br>
+    <!--Creamos el formulario para llenar los datos de la Empresa y guardarlo en el objeto emp -->
+    <form th:action="@{/ActualizarEmpresa}" th:object="${emp}" method="post">
+
+        <!--Campo para id -->
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3" for="id">Id de la empresa</label>
+                <div class="col-md-6">
+                    <input type="text" th:field="*{id}" name="nombre" id="id" class="form-control" required="required" readonly>
+                </div>
+            </div>
+        </div>
+
+        <!--Campo para llenar nombre -->
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3" for="nombre">Nombre de la Empresa</label>
+                <div class="col-md-6">
+                    <input type="text" th:field="*{nombre}" name="nombre" id="nombre" class="form-control" required="required">
+                </div>
+            </div>
+        </div>
+
+        <!--Campo para llenar direccion -->
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3" for="direccion">Direccion de la Empresa</label>
+                <div class="col-md-6">
+                    <input type="text" th:field="*{direccion}" name="direccion" id="direccion" class="form-control" required="required">
+                </div>
+            </div>
+        </div>
+
+        <!--Campo para llenar telefono -->
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3" for="telefono">Telefono de la Empresa</label>
+                <div class="col-md-6">
+                    <input type="text" th:field="*{telefono}" name="telefono" id="telefono" class="form-control" required="required">
+                </div>
+            </div>
+        </div>
+
+        <!--Campo para llenar NIT -->
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3" for="NIT">NIT de la Empresa</label>
+                <div class="col-md-6">
+                    <input type="text" th:field="*{NIT}" name="NIT" id="NIT" class="form-control" required="required">
+                </div>
+            </div>
+        </div>
+
+        <!-- Boton para enviar todo el formulario -->
+        <div class="row">
+            <div class="col-md-2">
+                <button class="btn btn-success">Actualizar Empresa</button>
+            </div>
+        </div>
+
+    </form>
+    <br>
+    <!--Boton para regresar a la pagina anterior -->
+    <a href="javascript:history.go(-1)" class="btn btn-info" role="button">Atras</a>
+
+
+</div>
+
+
+</body>
+</html>
