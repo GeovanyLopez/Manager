@@ -40,9 +40,9 @@ public class EmpresaServicios {
     // Metodo para eliminar una Empresa
     public boolean eliminarEmpresa(Integer id) {
         empresaRepositorio.deleteById(id);
-        if (obtenerEmpresaID(id) != null) {
-            return false;
+        if (empresaRepositorio.findById(id) != null) {
+            return true;
         }
-        return true;
+        return false;
     }
 }
