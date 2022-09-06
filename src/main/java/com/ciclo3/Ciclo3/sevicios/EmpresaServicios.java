@@ -29,12 +29,10 @@ public class EmpresaServicios {
     }
 
     // Metodo para guardar o actualizar objetos de tipo empresa
-    public boolean saveUpdate(Empresa empresa) {
+    public Empresa saveUpdate(Empresa empresa) {
         Empresa emp = (Empresa) empresaRepositorio.save(empresa);
-        if (empresaRepositorio.findById(emp.getId()) != null) {
-            return true;
-        }
-        return false;
+        return emp;
+
     }
 
     // Metodo para eliminar una Empresa
