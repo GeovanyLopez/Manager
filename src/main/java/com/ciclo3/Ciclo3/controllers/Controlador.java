@@ -20,7 +20,7 @@ public class Controlador {
 
     }
 
-    @PostMapping("/enterprises")
+    @PostMapping("/enterprises") // Guarda una Empresa
     public Empresa guardarEmpresa(@RequestBody Empresa emp){
         return this.empresaServicios.saveUpdate(emp);
     }
