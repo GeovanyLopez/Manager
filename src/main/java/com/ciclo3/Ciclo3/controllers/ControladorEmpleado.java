@@ -34,4 +34,27 @@ public class ControladorEmpleado {
         return empleadoServicios.obtenerPorEmpresa(id);
     }
 
+    @PatchMapping("/users/{id}")
+    public Empleado actualizarEmpleado(@PathVariable("id") Integer id,@RequestBody Empleado empleado){
+        Empleado empl = empleadoServicios.buscarPorId(id).get();
+        empl.setNombreEmpleado(empleado.getNombreEmpleado());
+        empl.setCorreo(empleado.getCorreo());
+        empl.setEmpresa(empleado.getEmpresa());
+        empl.setRol(empleado.getRol());
+
+        return empleadoServicios.saveUpdateEmpleado(empl);
+    }
+
+    @DeleteMapping("/users/{id}")
+    public String eliminarEmpleado(@PathVariable("id") Integer id){
+        boolean respuesta = this.empleadoServicios.eliminarEmpleado(id);
+        if(respuesta){
+            return "Se ha eliminado el empleado con id " + id;
+        }
+        else{
+            return "NO se pudo eliminar el empleado con id " + id;
+        }
+    }
+
+
 }
