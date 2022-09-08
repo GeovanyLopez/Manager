@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Empresa {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)//permite generar un Id en orden para los
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//permite generar un Id en orden para los
     // objetos que se vayan creando
     private int id;
 
