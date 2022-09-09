@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class ControladorMovimientos {
@@ -57,7 +58,7 @@ public class ControladorMovimientos {
     }
 
     @GetMapping("/enterprises/{id}/movements")
-    public ArrayList<MovimientoDinero> movimientoPorEmpresa(@PathVariable("id") Integer id){
+    public List<MovimientoDinero> movimientoPorEmpresa(@PathVariable("id") Integer id){
         return movimientosServicios.obtenerPorEmpresa(id);
     }
 }

@@ -50,6 +50,4 @@ public class ControladorEmpresa {
             return "NO se pudo eliminar la empresa con id " + id;
         }
     }
-
-
 }

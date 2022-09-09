@@ -55,6 +55,4 @@ public class ControladorEmpleado {
             return "NO se pudo eliminar el empleado con id " + id;
         }
     }
-
-
 }
