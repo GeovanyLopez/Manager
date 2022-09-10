@@ -42,12 +42,12 @@ public class ControladorEmpleado {
     }
 
     @PostMapping("/GuardarEmpleado")
-    public String guardarEmpleado(Empresa empl, RedirectAttributes redirectAttributes){
+    public String guardarEmpleado(Empleado empl, RedirectAttributes redirectAttributes){
         if(empleadoServicios.saveOrUpdateEmpleado(empl)== true){
             redirectAttributes.addFlashAttribute("mensaje","saveOK");
-            return "redirect:/VerEmpresas";// Se redirecciona al servicio
+            return "redirect:/VerEmpleados";// Se redirecciona al servicio
         }
         redirectAttributes.addFlashAttribute("mensaje","saveERROR");
-        return "redirect:/AgregarEmpresa";
+        return "redirect:/AgregarEmpleado";
     }
 }

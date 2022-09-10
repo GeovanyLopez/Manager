@@ -30,13 +30,13 @@
 
         <!--Llenar la tabla con datos-->
         <tr th:each="empleados: ${emplelist}" class="success"><!--emplelist esta en la clase Controlador -->
-            <td th:text="${empleado.id}"></td>
-            <td th:text="${empleado.nombre}"></td>
-            <td th:text="${empleado.correo}"></td>
-            <td th:text="${empleado.empresa}"></td>
-            <td th:text="${empleado.rol"></td>
-            <td><button type="button" class="btn btn-warning"><a th:href="@{/EditarEmpleado/{id}(id=${empleado.id})}">Editar</a></button></td>
-            <td><button type="button" class="btn btn-danger"><a th:href="@{/EliminarEmpleado/{id}(id=${empleado.id})}">Eliminar</a></button></td>
+            <td th:text="${empleados.id}"></td>
+            <td th:text="${empleados.nombreEmpleado}"></td>
+            <td th:text="${empleados.correo}"></td>
+            <td th:text="${empleados.empresa}"></td>
+            <td th:text="${empleados.rol"></td>
+            <td><button type="button" class="btn btn-warning"><a th:href="@{/EditarEmpleado/{id}(id=${empleados.id})}">Editar</a></button></td>
+            <td><button type="button" class="btn btn-danger"><a th:href="@{/EliminarEmpleado/{id}(id=${empleados.id})}">Eliminar</a></button></td>
          </tr>
     </table>
 
