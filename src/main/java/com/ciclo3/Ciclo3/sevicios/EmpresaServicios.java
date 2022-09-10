@@ -19,7 +19,7 @@ public class EmpresaServicios {
     public List<Empresa> listarEmpresas() {
         List<Empresa> listaEmpresas = new ArrayList<>();
         // Recorremos el iterable y lo guarda en una lista
-        empresaRepositorio.findAll().forEach(empresa -> listaEmpresas.add((Empresa) empresa));
+        empresaRepositorio.findAll().forEach(empresa -> listaEmpresas.add(empresa));
         return listaEmpresas;
     }
 

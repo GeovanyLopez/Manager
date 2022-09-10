@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Empleado {
     // Atributos
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)//permite generar un Id en orden para los
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//permite generar un Id en orden para los
     // objetos que se vayan creando
     private int id;
     private String nombreEmpleado;
@@ -27,6 +27,14 @@ public class Empleado {
         this.correo = correo;
         this.empresa = empresa;
         this.rol = rol;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombreEmpleado() {

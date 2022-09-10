@@ -12,7 +12,7 @@ import java.util.List;
 
 @Controller
 
-public class Controlador {
+public class ControladorEmpresa {
     @Autowired
     EmpresaServicios empresaServicios;
 
