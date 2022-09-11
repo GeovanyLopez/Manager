@@ -1,6 +1,8 @@
 package com.ciclo3.Ciclo3.controllers;
 
+import com.ciclo3.Ciclo3.modelos.Empleado;
 import com.ciclo3.Ciclo3.modelos.Empresa;
+import com.ciclo3.Ciclo3.sevicios.EmpleadoServicios;
 import com.ciclo3.Ciclo3.sevicios.EmpresaServicios;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,8 @@ import java.util.List;
 public class ControladorEmpresa {
     @Autowired
     EmpresaServicios empresaServicios;
+    @Autowired
+    EmpleadoServicios empleadosServisios;
 
     @GetMapping({"/", "/VerEmpresas"})
     public String viewEmpresas(Model model,@ModelAttribute("mensaje") String mensaje) {
@@ -68,5 +72,13 @@ public class ControladorEmpresa {
         }
         redirectAttributes.addFlashAttribute("mensaje","deleteError");
         return "redirect:/VerEmpresas";
+    }
+
+    // buscar empleados por empresa
+    @GetMapping("/Empresa/{id}/Empleados")
+    public String verEmpleadosPorEmpresa(@PathVariable("id") Integer id, Model model){
+        List<Empleado> listaEmpleados = empleadosServisios.obtenerPorEmpresa(id);
+        model.addAttribute("emplelist",listaEmpleados);
+        return "verEmpleados";
     }
 }

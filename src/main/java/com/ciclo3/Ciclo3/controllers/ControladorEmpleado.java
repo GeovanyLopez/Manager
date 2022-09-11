@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -49,5 +50,34 @@ public class ControladorEmpleado {
         }
         redirectAttributes.addFlashAttribute("mensaje","saveERROR");
         return "redirect:/AgregarEmpleado";
+    }
+
+    @GetMapping("/EditarEmpleado/{id}")
+    public String editarEmpleado(Model model, @PathVariable Integer id, @ModelAttribute("mensaje") String mensaje){
+        Empleado empl = empleadoServicios.getEmpleadoById(id).get();
+        model.addAttribute("empl",empl);
+        model.addAttribute("mensaje",mensaje);
+        List<Empresa> listaEmpresas = empresaServicios.listarEmpresas();
+        model.addAttribute("emprelist",listaEmpresas);
+        return "editarEmpleado";
+    }
+
+    @PostMapping("/ActualizarEmpleado")
+    public String updateEmpresa(@ModelAttribute("emp") Empleado empl,RedirectAttributes redirectAttributes){
+        if(empleadoServicios.saveOrUpdateEmpleado(empl) == true){
+            redirectAttributes.addFlashAttribute("mensaje","updateOK");
+            return "redirect:/VerEmpleados";// Se redirecciona al servicio
+        }
+        return "redirect:/EditarEmpleados";
+    }
+
+    @GetMapping("/EliminarEmpleado/{id}")
+    public String eliminarEmpleado(@PathVariable Integer id, RedirectAttributes redirectAttributes){
+        if(empleadoServicios.deleteEmpleado(id)){
+            redirectAttributes.addFlashAttribute("mensaje","deleteOK");
+            return "redirect:/VerEmpleados";
+        }
+        redirectAttributes.addFlashAttribute("mensaje","deleteError");
+        return "redirect:/VerEmpleados";
     }
 }
