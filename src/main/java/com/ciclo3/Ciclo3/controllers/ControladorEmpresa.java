@@ -61,7 +61,7 @@ public class ControladorEmpresa {
             redirectAttributes.addFlashAttribute("mensaje","updateOK");
             return "redirect:/VerEmpresas";// Se redirecciona al servicio
         }
-        return "redirect:/EditarEmpresa";
+        return "redirect:/EditarEmpresa"+ emp.getId();
     }
 
     @GetMapping("/EliminarEmpresa/{id}")

@@ -1,5 +1,6 @@
 package com.ciclo3.Ciclo3.sevicios;
 
+import com.ciclo3.Ciclo3.modelos.Empleado;
 import com.ciclo3.Ciclo3.modelos.MovimientoDinero;
 import com.ciclo3.Ciclo3.repositorio.MovimientoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +24,12 @@ public class MovimientosServicios {
         return movimientosRepositorio.findById(id).get();
     }
 
-    public MovimientoDinero saveOrUpdateMovimiento(MovimientoDinero movimientoDinero){ //Guardar o actualizar elementos
-        MovimientoDinero mov=movimientosRepositorio.save(movimientoDinero);
-        return mov;
+    public boolean saveOrUpdateMovimiento(MovimientoDinero movimientoDinero) {
+        MovimientoDinero mov = movimientosRepositorio.save(movimientoDinero);
+        if (movimientosRepositorio.findById(mov.getId()) != null) {
+            return true;
+        }
+        return false;
     }
 
     public boolean deleteMovimiento(Integer id){ //Eliminar movimiento por id

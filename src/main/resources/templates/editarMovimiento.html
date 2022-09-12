@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Agregar nuevo Movimiento</title>
+    <title>Editar Movimiento</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -12,10 +12,19 @@
 <body>
 
 <div class="container">
-    <h1> Ingrese los datos del Movimiento</h1>
+    <h1> Edite los datos del Movimiento</h1>
     <br>
     <!--Crear formulario para llenar los datos de la movimiento y guardarlo en el objeto mov -->
-    <form th:action="@{/GuardarMovimiento}" th:object="${mov}" method="post">
+    <form th:action="@{/ActualizarMovimiento}" th:object="${mov}" method="post">
+
+        <!--Campo para id-->
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3" for="id">Id del movimiento:</label>
+                <div class="col-md-6">
+                    <input type="text" th:field="*{id}" class="form-control" id="id" required="required" readonly></div>
+            </div>
+        </div>
         <!--Campo para concepto-->
         <div class="row">
             <div class="form-group col-md-12">

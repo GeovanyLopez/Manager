@@ -68,7 +68,7 @@ public class ControladorEmpleado {
             redirectAttributes.addFlashAttribute("mensaje","updateOK");
             return "redirect:/VerEmpleados";// Se redirecciona al servicio
         }
-        return "redirect:/EditarEmpleados";
+        return "redirect:/EditarEmpleados" + empl.getId();
     }
 
     @GetMapping("/EliminarEmpleado/{id}")
