@@ -10,15 +10,31 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <style>
+        a{
+            color:white;
+            font-family:verdana;
+
+        }
+        a:hover {
+            color: black;
+            text-decoration:none;
+        }
+        h1{
+            text-align:center;
+            color:red;
+            font-family:verdana;
+        }
+    </style>
 </head>
 <body>
 
 <div class="container">
     <h1>Lista de Empresas</h1>
-
+    <br>
     <!--Crear tabla -->
     <table class="table table-bordered">
-        <tr class="info">
+        <tr class="danger">
             <th>ID</th>
             <th>Nombre</th>
             <th>Direccion</th>
@@ -31,7 +47,7 @@
         </tr>
 
         <!--Llenar la tabla con datos-->
-        <tr th:each="empresa: ${empresaList}" class="success"><!--empresaList esta en la clase Controlador -->
+        <tr th:each="empresa: ${empresaList}" ><!--empresaList esta en la clase Controlador -->
             <td th:text="${empresa.id}"></td>
             <td th:text="${empresa.nombre}"></td>
             <td th:text="${empresa.direccion}"></td>
@@ -46,8 +62,12 @@
     </table>
 
     <!--creamos boton para agregar empresas-->
+
     <button type="button" class="btn btn-info"><a th:href="@{/AgregarEmpresa}">Agregar Nueva Empresa</a></button>
     <button type="button" class="btn btn-info"><a th:href="@{/VerEmpleados}">Ver Lista empleados</a></button>
+    <button type="button" class="btn btn-info"><a th:href="@{/VerMovimientos}">Ver Movimientos</a></button>
+
+
 
 </div>
 

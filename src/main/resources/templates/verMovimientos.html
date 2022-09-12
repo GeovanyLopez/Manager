@@ -10,6 +10,23 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <style>
+        a{
+            color:white;
+            font-family:verdana;
+
+        }
+        a:hover {
+            color: black;
+            text-decoration:none;
+        }
+        h1{
+            text-align:center;
+            color:red;
+            font-family:verdana;
+        }
+
+    </style>
 </head>
 <body>
 
@@ -18,7 +35,7 @@
 
     <!--Crear tabla -->
     <table class="table table-bordered">
-        <tr class="info">
+        <tr class="success">
             <th>ID</th>
             <th>Monto</th>
             <th>Concepto</th>
@@ -28,7 +45,7 @@
         </tr>
 
         <!--Llenar la tabla con datos-->
-        <tr th:each="movimiento: ${movlist}" ><!--emplelist esta en la clase Controlador -->
+        <tr th:each="movimiento: ${movlist}"><!--emplelist esta en la clase Controlador -->
             <td th:text="${movimiento.id}"></td>
             <td th:text="${movimiento.monto}"></td>
             <td th:if="${movimiento.concepto=='1'}">Nomina</td>
@@ -47,6 +64,7 @@
     <button type="button" class="btn btn-info"><a th:href="@{/AgregarMovimiento}">Agregar Nuevo Movimiento</a></button>
     <button type="button" class="btn btn-info"><a th:href="@{/VerEmpresas}">Ver Empresas</a></button>
     <button type="button" class="btn btn-info"><a th:href="@{/VerEmpleados}">Ver Empleados</a></button>
+
 </div>
 
 <script th:inline="javascript">
