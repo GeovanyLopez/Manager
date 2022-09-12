@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Lista de empresas</title>
+    <title>Lista de Movimientos</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -14,39 +14,34 @@
 <body>
 
 <div class="container">
-    <h1>Lista de Empresas</h1>
+    <h1>Lista de Movimientos</h1>
 
     <!--Crear tabla -->
     <table class="table table-bordered">
         <tr class="info">
             <th>ID</th>
-            <th>Nombre</th>
-            <th>Direccion</th>
-            <th>Telefono</th>
-            <th>NIT</th>
-            <th>Empleados</th>
+            <th>Monto</th>
+            <th>Concepto</th>
+            <th>Empleado Responsable</th>
             <th>Editar</th>
             <th>Eliminar</th>
         </tr>
 
         <!--Llenar la tabla con datos-->
-        <tr th:each="empresa: ${empresaList}" class="success"><!--empresaList esta en la clase Controlador -->
-            <td th:text="${empresa.id}"></td>
-            <td th:text="${empresa.nombre}"></td>
-            <td th:text="${empresa.direccion}"></td>
-            <td th:text="${empresa.telefono}"></td>
-            <td th:text="${empresa.NIT}"></td>
-
-            <td><button type="button" class="btn btn-info"><a th:href="@{/Empresa/{id}/Empleados (id=${empresa.id})}">Ver</a></button></td>
-            <td><button type="button" class="btn btn-warning"><a th:href="@{/EditarEmpresa/{id}(id=${empresa.id})}">Editar</a></button></td>
-            <td><button type="button" class="btn btn-danger"><a th:href="@{/EliminarEmpresa/{id}(id=${empresa.id})}">Eliminar</a></button></td>
+        <tr th:each="movimiento: ${movlist}" ><!--emplelist esta en la clase Controlador -->
+            <td th:text="${movimiento.id}"></td>
+            <td th:text="${movimiento.monto}"></td>
+            <td th:text="${movimiento.concepto}"></td>
+            <td th:text="${movimiento.usuario}"></td>
+            <td><button type="button" class="btn btn-warning"><a th:href="@{/EditarMovimiento/{id}/(id=${movimiento.id})}">Editar</a></button></td>
+            <td><button type="button" class="btn btn-danger"><a th:href="@{/EliminarMovimiento/{id}/(id=${movimiento.id})}">Eliminar</a></button></td>
          </tr>
     </table>
 
-    <!--creamos boton para agregar empresas-->
-    <button type="button" class="btn btn-info"><a th:href="@{/AgregarEmpresa}">Agregar Nueva Empresa</a></button>
-    <button type="button" class="btn btn-info"><a th:href="@{/VerEmpleados}">Ver Lista empleados</a></button>
-
+    <!--creamos boton para agregar Movimientos-->
+    <button type="button" class="btn btn-info"><a th:href="@{/AgregarMovimiento}">Agregar Nuevo Movimiento</a></button>
+    <button type="button" class="btn btn-info"><a th:href="@{/VerEmpresas}">Ver Empresas</a></button>
+    <button type="button" class="btn btn-info"><a th:href="@{/VerEmpleados}">Ver Empleados</a></button>
 </div>
 
 <script th:inline="javascript">
@@ -54,16 +49,16 @@
 
         var msg= [[${mensaje}]];
         if (msg == "saveOK"){
-            Command : toastr["success"]("Empresa creada con éxito!")
+            Command : toastr["success"]("Movimiento registrado con éxito!")
             }
         else if (msg == "updateOK"){
-            Command : toastr["success"]("Empresa actualizada con éxito!")
+            Command : toastr["success"]("Movimiento actualizado con éxito!")
         }
         else if (msg == "deleteOK"){
-            Command : toastr["error"]("Empresa eliminada con éxito!")
+            Command : toastr["error"]("Movimiento eliminado con éxito!")
         }
         else if (msg == "deleteError"){
-            Command : toastr["error"]("Empresa no ha sido eliminada!")
+            Command : toastr["error"]("Movimiento no ha sido eliminada!")
         }
         toastr.options={
             "positionClass": "toast-top-right",

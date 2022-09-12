@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 @Repository
 public interface EmpleadoRepositorio extends CrudRepository<Empleado,Integer> {
-    @Query(value="SELECT * FROM empleado WHERE empresa_id = ?1", nativeQuery = true)
-    public ArrayList<Empleado>findByEmpresa(Integer id);
+    @Query(value="SELECT * FROM empleado where empresa_id= ?1", nativeQuery=true)
+    public abstract ArrayList<Empleado> findByEmpresa(Integer id);
 
 }
