@@ -15,4 +15,16 @@ public interface MovimientoRepositorio extends JpaRepository<MovimientoDinero,In
     @Query(value="select * from Movimientos where empleado_id in (select id from empleado where empresa_id= ?1)", nativeQuery = true)
     public abstract ArrayList<MovimientoDinero> findByEmpresa(Integer id);
 
+    // Metodo para sumar todos los movimientos
+    @Query(value = "SELECT SUM(monto) FROM Movimientos", nativeQuery = true)
+    public abstract long sumaMonto();
+
+    // Metodo para sumar todos los movimientos por empleado
+    @Query(value = "SELECT SUM(monto) FROM Movimientos WHERE empleado_id=?1", nativeQuery = true)
+    public abstract long sumaMontoPorEmpleado(Integer id);
+
+    // Metodo para sumar todos los movimientos
+    @Query(value = "SELECT SUM(monto) FROM Movimientos WHERE empleado_id in (SELECT id FROM empleado WHERE empresa_id= ?1)", nativeQuery = true)
+    public abstract long sumaMontoPorEmpresa(Integer id);
+
 }

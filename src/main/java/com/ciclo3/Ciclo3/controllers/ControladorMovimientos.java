@@ -32,6 +32,8 @@ public class ControladorMovimientos {
         List<MovimientoDinero> listaMovimientos=movimientosServicios.getAllMovimientos();
         model.addAttribute("movlist",listaMovimientos);
         model.addAttribute("mensaje",mensaje);
+        Long sumaMonto = movimientosServicios.obtenerSumaMonto();
+        model.addAttribute("sumaMonto",sumaMonto);
         return "verMovimientos"; //Llamamos al HTML
     }
 
@@ -87,6 +89,8 @@ public class ControladorMovimientos {
     public String movimientoPorEmpleado(@PathVariable("id") Integer id, Model model){
         List<MovimientoDinero> movlist = movimientosServicios.obtenerPorEmpleado(id);
         model.addAttribute("movlist",movlist);
+        Long sumaMonto = movimientosServicios.montoPorEmpleado(id);
+        model.addAttribute("sumaMonto",sumaMonto);
         return "verMovimientos";
     }
     // Buscar movimientos por empresa
@@ -94,6 +98,8 @@ public class ControladorMovimientos {
     public String movimientoPorEmpresa(@PathVariable("id") Integer id, Model model){
         List<MovimientoDinero> movlist = movimientosServicios.obtenerPorEmpresa(id);
         model.addAttribute("movlist",movlist);
+        Long sumaMonto = movimientosServicios.montoPorEmpresa(id);
+        model.addAttribute("sumaMonto",sumaMonto);
         return "verMovimientos";
     }
 

@@ -44,7 +44,23 @@ public class MovimientosServicios {
         return movimientosRepositorio.findByEmpleado(id);
     }
 
-    public ArrayList<MovimientoDinero> obtenerPorEmpresa(Integer id) { //Obtener movimientos teniendo en cuenta el id de la empresa a la que pertencen los empleados que la registraron
+    //Obtener movimientos teniendo en cuenta el id de la empresa a la que pertencen los empleados que la registraron
+    public ArrayList<MovimientoDinero> obtenerPorEmpresa(Integer id) {
         return movimientosRepositorio.findByEmpresa(id);
+    }
+
+    // Obtener suma de todos los movimientos
+    public long obtenerSumaMonto(){
+        return movimientosRepositorio.sumaMonto();
+    }
+
+    // Obtener suma de todos los movimientos por empleado
+    public long montoPorEmpleado(Integer id){
+        return movimientosRepositorio.sumaMontoPorEmpleado(id);
+    }
+
+    // Obtener suma de todos los movimientos por empresa
+    public long montoPorEmpresa(Integer id){
+        return movimientosRepositorio.sumaMontoPorEmpresa(id);
     }
 }
