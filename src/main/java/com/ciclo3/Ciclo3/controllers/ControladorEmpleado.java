@@ -6,6 +6,9 @@ import com.ciclo3.Ciclo3.repositorio.EmpleadoRepositorio;
 import com.ciclo3.Ciclo3.sevicios.EmpleadoServicios;
 import com.ciclo3.Ciclo3.sevicios.EmpresaServicios;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,6 +47,9 @@ public class ControladorEmpleado {
 
     @PostMapping("/GuardarEmpleado")
     public String guardarEmpleado(Empleado empl, RedirectAttributes redirectAttributes){
+        //encriptar la contraseña
+        String passwordEncrip = passwordEncoder().encode(empl.getPassword());
+        empl.setPassword(passwordEncrip);
         if(empleadoServicios.saveOrUpdateEmpleado(empl)== true){
             redirectAttributes.addFlashAttribute("mensaje","saveOK");
             return "redirect:/VerEmpleados";// Se redirecciona al servicio
@@ -64,6 +70,9 @@ public class ControladorEmpleado {
 
     @PostMapping("/ActualizarEmpleado")
     public String updateEmpresa(@ModelAttribute("emp") Empleado empl,RedirectAttributes redirectAttributes){
+        //encriptar la contraseña
+        String passwordEncrip = passwordEncoder().encode(empl.getPassword());
+        empl.setPassword(passwordEncrip);
         if(empleadoServicios.saveOrUpdateEmpleado(empl) == true){
             redirectAttributes.addFlashAttribute("mensaje","updateOK");
             return "redirect:/VerEmpleados";// Se redirecciona al servicio
@@ -79,5 +88,11 @@ public class ControladorEmpleado {
         }
         redirectAttributes.addFlashAttribute("mensaje","deleteError");
         return "redirect:/VerEmpleados";
+    }
+
+    // Metodo para encriptar la contraseña del empleado
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
     }
 }

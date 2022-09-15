@@ -17,16 +17,22 @@ public class Empleado {
     private Empresa empresa;
     private String rol;
 
+    private String password;
+
+    private Boolean estado;
+
     // Constructor
     public Empleado() {
 
     }
 
-    public Empleado(String nombreEmpleado, String correo, Empresa empresa, String rol) {
+    public Empleado(String nombreEmpleado, String correo, Empresa empresa, String rol, String password, Boolean estado){
         this.nombreEmpleado = nombreEmpleado;
         this.correo = correo;
         this.empresa = empresa;
         this.rol = rol;
+        this.password = password;
+        this.estado = estado;
     }
 
     public int getId() {
@@ -67,5 +73,21 @@ public class Empleado {
 
     public void setRol(String rol) {
         this.rol = rol;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
     }
 }
