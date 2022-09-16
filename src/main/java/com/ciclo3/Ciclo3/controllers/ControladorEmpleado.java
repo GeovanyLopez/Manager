@@ -11,10 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -69,10 +66,15 @@ public class ControladorEmpleado {
     }
 
     @PostMapping("/ActualizarEmpleado")
-    public String updateEmpresa(@ModelAttribute("emp") Empleado empl,RedirectAttributes redirectAttributes){
-        //encriptar la contraseña
-        String passwordEncrip = passwordEncoder().encode(empl.getPassword());
-        empl.setPassword(passwordEncrip);
+    public String updateEmpresa(@ModelAttribute("empl") Empleado empl,RedirectAttributes redirectAttributes){
+        Integer id = empl.getId();
+        String oldPass = empleadoServicios.getEmpleadoById(id).get().getPassword();
+        if(!empl.getPassword().equals(oldPass)){
+            //encriptar la contraseña
+            String passwordEncrip = passwordEncoder().encode(empl.getPassword());
+            empl.setPassword(passwordEncrip);
+        }
+
         if(empleadoServicios.saveOrUpdateEmpleado(empl) == true){
             redirectAttributes.addFlashAttribute("mensaje","updateOK");
             return "redirect:/VerEmpleados";// Se redirecciona al servicio
@@ -94,5 +96,10 @@ public class ControladorEmpleado {
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
+    }
+
+    @RequestMapping("/Denegado")
+    public String accesoDenegado(){
+        return "accesoDenegado";
     }
 }

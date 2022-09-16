@@ -30,6 +30,13 @@
 <body>
 
 <div class="container">
+    <button type="button"  class="btn btn-danger">
+        <a th:href="@{/logout}">Cerrar Sesion</a>
+    </button>
+
+    <!--Ver que usuario esta logueado-->
+    <p th:inline="text">User: [[${#httpServletRequest.remoteUser}]]</p>
+    <br>
     <h1>Lista de Empresas</h1>
     <br>
     <!--Crear tabla -->

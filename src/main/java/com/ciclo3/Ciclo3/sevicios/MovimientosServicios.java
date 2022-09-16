@@ -63,4 +63,10 @@ public class MovimientosServicios {
     public long montoPorEmpresa(Integer id){
         return movimientosRepositorio.sumaMontoPorEmpresa(id);
     }
+
+    //Metodo que nos permite tener el id si tenemos su correo
+    public Integer idPorCorreo(String correo){
+        return movimientosRepositorio.idPorCorreo(correo);
+
+    }
 }

@@ -7,6 +7,8 @@ import com.ciclo3.Ciclo3.sevicios.EmpleadoServicios;
 import com.ciclo3.Ciclo3.sevicios.EmpresaServicios;
 import com.ciclo3.Ciclo3.sevicios.MovimientosServicios;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,8 +44,10 @@ public class ControladorMovimientos {
         MovimientoDinero movimiento = new MovimientoDinero();
         model.addAttribute("mov",movimiento);
         model.addAttribute("mensaje",mensaje);
-        List<Empleado> listaEmpleados = empleadoServicios.getAllEmpleado();
-        model.addAttribute("emplelist",listaEmpleados);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String correo = auth.getName();
+        Integer idEmpleado = movimientosServicios.idPorCorreo(correo);
+        model.addAttribute("idEmpleado",idEmpleado);
         return "agregarMovimiento";
     }
     @PostMapping("/GuardarMovimiento")
