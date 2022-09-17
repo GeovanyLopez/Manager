@@ -39,7 +39,7 @@ public class ControladorEmpleado {
         model.addAttribute("mensaje",mensaje);
         List<Empresa> listaEmpresas = empresaServicios.listarEmpresas();
         model.addAttribute("emprelist",listaEmpresas);
-        return "agregarEmpleado.html";
+        return "agregarEmpleado";
     }
 
     @PostMapping("/GuardarEmpleado")
@@ -95,11 +95,13 @@ public class ControladorEmpleado {
     // Metodo para encriptar la contraseña del empleado
     @Bean
     public PasswordEncoder passwordEncoder(){
+
         return new BCryptPasswordEncoder();
     }
 
-    @RequestMapping("/Denegado")
+    @RequestMapping(value="/Denegado")
     public String accesoDenegado(){
+
         return "accesoDenegado";
     }
 }

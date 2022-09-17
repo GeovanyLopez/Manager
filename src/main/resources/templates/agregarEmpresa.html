@@ -12,6 +12,8 @@
 <body>
 
     <div class="container">
+        <p th:inline="text" class="text-right">User: [[${#httpServletRequest.remoteUser}]]</p>
+        <button type="button" class="btn btn-danger" style="float:right"><a th:href="@{/logout}">Cerrar Sesión</a></button>
         <h1>Agregue aqui los datos</h1>
         <br>
         <!--Creamos el formulario para llenar los datos de la Empresa y guardarlo en el objeto emp -->

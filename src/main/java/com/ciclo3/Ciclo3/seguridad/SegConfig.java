@@ -20,7 +20,7 @@ public class SegConfig extends WebSecurityConfigurerAdapter {
     CustomSuccessHandler customSuccessHandler;
 
     @Autowired
-    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception{
+    public void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.jdbcAuthentication().passwordEncoder(new BCryptPasswordEncoder())
                 .dataSource(dataSource)
                 .usersByUsernameQuery("select correo,password,estado from empleado where correo = ?")
@@ -34,7 +34,7 @@ public class SegConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/VerEmpleados/**").hasRole("ADMIN")
                 .antMatchers("/Empresa/**").hasRole("ADMIN")
                 .antMatchers("/Empleado/**").hasRole("ADMIN")
-                .antMatchers("/VerMovimiento/**").hasAnyRole("ADMIN","USER")
+                .antMatchers("/VerMovimientos/**").hasAnyRole("ADMIN","USER")
                 .antMatchers("/AgregarMovimiento/**").hasAnyRole("ADMIN","USER")
                 .antMatchers("/EditarMovimiento/**").hasAnyRole("ADMIN","USER")
                 .and().formLogin().successHandler(customSuccessHandler)

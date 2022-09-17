@@ -12,6 +12,8 @@
 <body>
 
 <div class="container">
+    <p th:inline="text" class="text-right">User: [[${#httpServletRequest.remoteUser}]]</p>
+    <button type="button" class="btn btn-danger" style="float:right"><a th:href="@{/logout}">Cerrar Sesión</a></button>
     <h1> Actualice los datos del Empleado</h1>
     <br>
     <!--Crear formulario para llenar los datos de la empresa y guardarlo en el objeto emp -->
@@ -48,7 +50,7 @@
             <div class="form-group col-md-12">
                 <label class="col-md-3" for="password">Contraseña del empleado:</label>
                 <div class="col-md-6">
-                    <input type="password" th:field="*{password}" class="form-control" id="password"></div>
+                    <input type="text" th:field="*{password}" class="form-control" id="password"></div>
             </div>
         </div>
 

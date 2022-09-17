@@ -12,6 +12,8 @@
 <body>
 
 <div class="container">
+    <p th:inline="text" class="text-right">User: [[${#httpServletRequest.remoteUser}]]</p>
+    <button type="button" class="btn btn-danger" style="float:right"><a th:href="@{/logout}">Cerrar Sesión</a></button>
     <h1>Edite aqui los datos</h1>
     <br>
     <!--Creamos el formulario para llenar los datos de la Empresa y guardarlo en el objeto emp -->
@@ -22,7 +24,7 @@
             <div class="form-group col-md-12">
                 <label class="col-md-3" for="id">Id de la empresa</label>
                 <div class="col-md-6">
-                    <input type="text" th:field="*{id}" name="nombre" id="id" class="form-control" required="required" readonly>
+                    <input type="text" th:field="*{id}" id="id" class="form-control" required="required" readonly>
                 </div>
             </div>
         </div>
@@ -32,7 +34,7 @@
             <div class="form-group col-md-12">
                 <label class="col-md-3" for="nombre">Nombre de la Empresa</label>
                 <div class="col-md-6">
-                    <input type="text" th:field="*{nombre}" name="nombre" id="nombre" class="form-control" required="required">
+                    <input type="text" th:field="*{nombre}"  id="nombre" class="form-control" required="required">
                 </div>
             </div>
         </div>
@@ -42,7 +44,7 @@
             <div class="form-group col-md-12">
                 <label class="col-md-3" for="direccion">Direccion de la Empresa</label>
                 <div class="col-md-6">
-                    <input type="text" th:field="*{direccion}" name="direccion" id="direccion" class="form-control" required="required">
+                    <input type="text" th:field="*{direccion}" id="direccion" class="form-control" required="required">
                 </div>
             </div>
         </div>
@@ -52,7 +54,7 @@
             <div class="form-group col-md-12">
                 <label class="col-md-3" for="telefono">Telefono de la Empresa</label>
                 <div class="col-md-6">
-                    <input type="text" th:field="*{telefono}" name="telefono" id="telefono" class="form-control" required="required">
+                    <input type="text" th:field="*{telefono}"  id="telefono" class="form-control" required="required">
                 </div>
             </div>
         </div>
@@ -62,7 +64,7 @@
             <div class="form-group col-md-12">
                 <label class="col-md-3" for="NIT">NIT de la Empresa</label>
                 <div class="col-md-6">
-                    <input type="text" th:field="*{NIT}" name="NIT" id="NIT" class="form-control" required="required">
+                    <input type="text" th:field="*{NIT}"  id="NIT" class="form-control" required="required">
                 </div>
             </div>
         </div>
