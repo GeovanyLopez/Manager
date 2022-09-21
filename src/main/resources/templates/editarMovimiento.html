@@ -8,6 +8,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+    <style>
+        a{
+            color:white;
+            text-decoration:none;
+        }
+        a:hover{
+            color:blue;
+
+        }
+    </style>
 </head>
 <body>
 
@@ -61,7 +71,7 @@
                 <label class="col-md-3" for="usuario">Empleado que hace movimiento:</label>
                 <div class="col-md-6">
                     <select th:field="*{usuario}" class="form-control" id="usuario" required="required">
-                        <option th:text="${usuario.correo}" th:value="${usuario.id}"></option>
+                        <option  th:value="*{usuario.id}">[[${#httpServletRequest.remoteUser}]]</option>
                     </select>
                 </div>
             </div>
@@ -79,7 +89,7 @@
         <!--Boton para enviar todo y ejecutar accion -->
         <div class="row">
             <div class="col-md-2">
-                <button class="btn btn-success">Registrar Movimiento</button>
+                <button class="btn btn-success">Actualizar Movimiento</button>
             </div>
         </div>
 
