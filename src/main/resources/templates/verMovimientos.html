@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Movimientos</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <style>
+        a{
+            color:white;
+            font-family:verdana;
+
+        }
+        a:hover {
+            color: black;
+            text-decoration:none;
+        }
+        h1{
+            text-align:center;
+            color:red;
+            font-family:verdana;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Lista de Movimientos</h1>
+    <p th:inline="text" class="text-right">User: [[${#httpServletRequest.remoteUser}]]</p>
+    <button type="button" class="btn btn-danger" style="float:right"><a th:href="@{/logout}">Cerrar Sesión</a></button>
+
+    <!--Crear tabla -->
+    <table class="table table-bordered">
+        <tr class="success">
+            <th>ID</th>
+            <th>Monto</th>
+            <th>Concepto</th>
+            <th>Empleado Responsable</th>
+            <th>Fecha</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+        </tr>
+
+        <!--Llenar la tabla con datos-->
+        <tr th:each="movimiento: ${movlist}"><!--emplelist esta en la clase Controlador -->
+            <td th:text="${movimiento.id}"></td>
+            <td th:text="${#numbers.formatCurrency(movimiento.monto)}"></td>
+            <td th:if="${movimiento.concepto=='1'}">Nomina</td>
+            <td th:if="${movimiento.concepto=='2'}">Mobiliario</td>
+            <td th:if="${movimiento.concepto=='3'}">Equipos</td>
+            <td th:if="${movimiento.concepto=='4'}">Papeleris</td>
+            <td th:if="${movimiento.concepto=='5'}">Impuestos</td>
+            <td th:if="${movimiento.concepto=='6'}">Servivios Publicos</td>
+            <td th:text="${movimiento.usuario.nombreEmpleado}"></td>
+            <td th:text="${#dates.format(movimiento.fecha,'dd/mm/yyyy')}"></td>
+            <td><button type="button" class="btn btn-warning"><a th:href="@{/EditarMovimiento/{id}/(id=${movimiento.id})}">Editar</a></button></td>
+            <td><button type="button" class="btn btn-danger"><a th:href="@{/EliminarMovimiento/{id}/(id=${movimiento.id})}">Eliminar</a></button></td>
+         </tr>
+    </table>
+
+    <div class="row">
+        <div class="form-group col-md-12">
+            <label class="col-md-3" for="sumaMonto">Total Movimientos</label>
+            <div class="col-md-6">
+                <p th:text="${#numbers.formatCurrency(sumaMonto)}" class="form-control" id="sumaMonto"></p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--creamos boton para agregar Movimientos-->
+    <button type="button" class="btn btn-info"><a th:href="@{/AgregarMovimiento}">Agregar Nuevo Movimiento</a></button>
+    <button type="button" class="btn btn-info"><a th:href="@{/VerEmpresas}">Ver Empresas</a></button>
+    <button type="button" class="btn btn-info"><a th:href="@{/VerEmpleados}">Ver Empleados</a></button>
+
+</div>
+
+<script th:inline="javascript">
+    window.onload=function(){
+
+        var msg= [[${mensaje}]];
+        if (msg == "saveOK"){
+            Command : toastr["success"]("Movimiento registrado con éxito!")
+            }
+        else if (msg == "updateOK"){
+            Command : toastr["success"]("Movimiento actualizado con éxito!")
+        }
+        else if (msg == "deleteOK"){
+            Command : toastr["error"]("Movimiento eliminado con éxito!")
+        }
+        else if (msg == "deleteError"){
+            Command : toastr["error"]("Movimiento no ha sido eliminada!")
+        }
+        toastr.options={
+            "positionClass": "toast-top-right",
+            "showDuration":"300",
+            "showMethod":"fadeIn",
+            "hideMethod":"fadeOut",
+        }
+    }
+
+</script>
+
+</body>
+</html>>
