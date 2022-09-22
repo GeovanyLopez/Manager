@@ -7,44 +7,59 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">-->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <style>
-           a{
-            color:white;
-            font-family:verdana;
-            text-decoration: none;
 
-        }
-        a:hover {
-            color: black;
-            text-decoration:none;
+    <style>
+        ul{
+            margin:20px;
         }
         h1{
-            text-align:center;
-            color:red;
-            font-family:verdana;
+            padding:12px;
+            margin:12px;
         }
-         .btn{
-            border-radius:10px;
+        .logout{
+            color:white;
+            text-decoration:none;
         }
-
+        .logout:hover{
+            color:black;
+             text-decoration:none;
+             border: solid 2px red;
+        }
     </style>
+
 </head>
 <body>
+<ul class="nav justify-content-center">
+    <li class="nav-item">
+        <a th:href="@{/AgregarEmpresa}"class="nav-link active">Agregar Nueva Empresa</a>
+    </li>
+    <li class="nav-item">
+        <a th:href="@{/VerEmpleados}" class="nav-link ">Ver Lista empleados</a>
+    </li>
+    <li class="nav-item">
+        <a th:href="@{/VerMovimientos}" class="nav-link ">Ver Movimientos</a>
+    </li>
 
+    <li class="nav-item">
+        <a class="nav-link disabled" href="#">Usuario: [[${#httpServletRequest.remoteUser}]]</a>
+    </li>
+    <li class="nav-item bg-danger text-white">
+        <a th:href="@{/logout}" class="logout">Cerrar Sesion</a>
+    </li>
+</ul>
 <div class="container">
 
-        <!--Ver que usuario esta logueado-->
+        <!--Ver que usuario esta logueado
         <p th:inline="text" class="text-right">Usuario: [[${#httpServletRequest.remoteUser}]]</p>
         <button type="button"  class="btn btn-danger"  style="float:right">
             <a th:href="@{/logout}">Cerrar Sesion</a>
-        </button>
+        </button>-->
 
-    <br>
-    <h1>Lista de Empresas</h1>
+    <h1 class="text-center bg-dark text-white ">Lista de Empresas</h1>
     <br>
     <!--Crear tabla -->
     <table class="table table-bordered">
@@ -79,9 +94,9 @@
 
     <!--creamos boton para agregar empresas-->
 
-    <button type="button" class="btn btn-info"><a th:href="@{/AgregarEmpresa}">Agregar Nueva Empresa</a></button>
-    <button type="button" class="btn btn-info"><a th:href="@{/VerEmpleados}">Ver Lista empleados</a></button>
-    <button type="button" class="btn btn-info"><a th:href="@{/VerMovimientos}">Ver Movimientos</a></button>
+<!--    <button type="button" class="btn btn-info"><a th:href="@{/AgregarEmpresa}">Agregar Nueva Empresa</a></button>-->
+<!--    <button type="button" class="btn btn-info"><a th:href="@{/VerEmpleados}">Ver Lista empleados</a></button>-->
+<!--    <button type="button" class="btn btn-info"><a th:href="@{/VerMovimientos}">Ver Movimientos</a></button>-->
 
 
 
@@ -113,5 +128,8 @@
 
 </script>
 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 </html>
