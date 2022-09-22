@@ -7,6 +7,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+         a{
+            color:white;
+            font-family:verdana;
+
+        }
+        a:hover {
+            color: black;
+            text-decoration:none;
+        }
+    </script>
 
 </head>
 <body>
@@ -23,7 +34,8 @@
             <div class="form-group col-md-12">
                 <label class="col-md-3" for="id">Id del Empleado:</label>
                 <div class="col-md-6">
-                    <input type="text" th:field="*{id}" class="form-control" id="id" required="required" readonly></div>
+                    <input type="text" th:field="*{id}" class="form-control" id="id" required="required" readonly>
+                </div>
             </div>
         </div>
 
@@ -32,7 +44,8 @@
             <div class="form-group col-md-12">
                 <label class="col-md-3" for="nombreEmpleado">Nombre del Empleado:</label>
                 <div class="col-md-6">
-                    <input type="text" th:field="*{nombreEmpleado}" class="form-control" id="nombreEmpleado" required="required"></div>
+                    <input type="text" th:field="*{nombreEmpleado}" class="form-control" id="nombreEmpleado" required="required">
+                </div>
             </div>
         </div>
 
@@ -41,7 +54,8 @@
             <div class="form-group col-md-12">
                 <label class="col-md-3" for="correo">Correo del empleado:</label>
                 <div class="col-md-6">
-                    <input type="email" th:field="*{correo}" class="form-control" id="correo" required="required"></div>
+                    <input type="email" th:field="*{correo}" class="form-control" id="correo" required="required">
+                </div>
             </div>
         </div>
 
@@ -50,7 +64,8 @@
             <div class="form-group col-md-12">
                 <label class="col-md-3" for="password">Contraseña del empleado:</label>
                 <div class="col-md-6">
-                    <input type="text" th:field="*{password}" class="form-control" id="password"></div>
+                    <input type="text" th:field="*{password}" class="form-control" id="password">
+                </div>
             </div>
         </div>
 
