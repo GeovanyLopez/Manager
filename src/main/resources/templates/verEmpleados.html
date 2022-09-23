@@ -12,6 +12,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <style>
+         body{
+            font-size:16px;
+            font-family: monospace;
+         }
         ul{
             margin:20px;
         }
@@ -28,13 +32,18 @@
              text-decoration:none;
              border: solid 2px red;
         }
+          table button a{
+            color:white;
+            text-decoration:none;
+
+        }
     </style>
 </head>
 <body>
 
 <ul class="nav justify-content-center">
     <li class="nav-item">
-        <a th:href="@{/AgregarEmpleado}" class="nav-link active">Agregar Nuevo Empleado</a>
+        <a th:href="@{/AgregarEmpleado}" class="nav-link active">Agregar Empleado</a>
     </li>
     <li class="nav-item">
         <a th:href="@{/VerEmpresas}" class="nav-link ">Ver Empresas</a>
@@ -56,7 +65,7 @@
 <!--        <a th:href="@{/logout}">Cerrar Sesión</a>-->
 <!--    </button>-->
 
-    <h1 class="text-center bg-dark text-white ">Lista de Empleados</h1>
+    <h1 class="text-center bg-primary text-white ">Lista de Empleados</h1>
 
     <!--Crear tabla -->
     <table class="table table-bordered">
@@ -82,9 +91,27 @@
             <td th:if="${empleado.rol=='ROLE_USER'}">Operativo</td>
             <td th:if="${empleado.estado==true}">ACTIVO</td>
             <td th:if="${empleado.estado==false}">INACTIVO</td>
-            <td><button type="button" class="btn btn-info"><a th:href="@{/Empleado/{id}/Movimientos (id=${empleado.id})}">Ver</a></button></td>
-            <td><button type="button" class="btn btn-warning"><a th:href="@{/EditarEmpleado/{id}/(id=${empleado.id})}">Editar</a></button></td>
-            <td><button type="button" class="btn btn-danger"><a th:href="@{/EliminarEmpleado/{id}/(id=${empleado.id})}">Eliminar</a></button></td>
+            <td class="text-center">
+                <button type="button" class="btn ">
+                    <a th:href="@{/Empleado/{id}/Movimientos (id=${empleado.id})}">
+                        <img src="https://cdn-icons-png.flaticon.com/128/2735/2735817.png" height="24" width="24" alt="">
+                    </a>
+                </button>
+            </td>
+            <td class="text-center">
+                <button type="button" class="btn ">
+                    <a th:href="@{/EditarEmpleado/{id}/(id=${empleado.id})}">
+                        <img src="https://cdn-icons-png.flaticon.com/128/2921/2921222.png" height="24" width="24" alt="">
+                    </a>
+                </button>
+            </td>
+            <td>
+                <button type="button" class="btn">
+                    <a th:href="@{/EliminarEmpleado/{id}/(id=${empleado.id})}">
+                        <img src="https://cdn-icons-png.flaticon.com/128/458/458594.png" height="24" width="24" alt="">
+                    </a>
+                </button>
+            </td>
          </tr>
     </table>
 

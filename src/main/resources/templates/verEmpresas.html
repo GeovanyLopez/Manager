@@ -13,6 +13,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <style>
+        body{
+            font-size:16px;
+
+            font-family: monospace;
+        }
         ul{
             margin:20px;
         }
@@ -29,16 +34,18 @@
              text-decoration:none;
              border: solid 2px red;
         }
+
+
     </style>
 
 </head>
 <body>
 <ul class="nav justify-content-center">
     <li class="nav-item">
-        <a th:href="@{/AgregarEmpresa}"class="nav-link active">Agregar Nueva Empresa</a>
+        <a th:href="@{/AgregarEmpresa}"class="nav-link active">Agregar Empresa</a>
     </li>
     <li class="nav-item">
-        <a th:href="@{/VerEmpleados}" class="nav-link ">Ver Lista empleados</a>
+        <a th:href="@{/VerEmpleados}" class="nav-link ">Ver empleados</a>
     </li>
     <li class="nav-item">
         <a th:href="@{/VerMovimientos}" class="nav-link ">Ver Movimientos</a>
@@ -59,11 +66,11 @@
             <a th:href="@{/logout}">Cerrar Sesion</a>
         </button>-->
 
-    <h1 class="text-center bg-dark text-white ">Lista de Empresas</h1>
+    <h1 class="text-center bg-primary text-white ">Lista de Empresas</h1>
     <br>
     <!--Crear tabla -->
     <table class="table table-bordered">
-        <tr class="danger">
+        <tr class="info text-center">
             <th>ID</th>
             <th>Nombre</th>
             <th>Direccion</th>
@@ -84,10 +91,34 @@
             <td th:text="${empresa.telefono}"></td>
             <td th:text="${empresa.NIT}"></td>
 
-            <td><button type="button" class="btn btn-info"><a th:href="@{/Empresa/{id}/Empleados (id=${empresa.id})}">Ver</a></button></td>
-            <td><button type="button" class="btn btn-primary"><a th:href="@{/Empresa/{id}/Movimientos (id=${empresa.id})}">Ver</a></button></td>
-            <td><button type="button" class="btn btn-warning"><a th:href="@{/EditarEmpresa/{id}(id=${empresa.id})}">Editar</a></button></td>
-            <td><button type="button" class="btn btn-danger"><a th:href="@{/EliminarEmpresa/{id}(id=${empresa.id})}">Eliminar</a></button></td>
+            <td class="text-center">
+                <button type="button" class="btn ">
+                    <a th:href="@{/Empresa/{id}/Empleados (id=${empresa.id})}">
+                        <img src="https://t3.ftcdn.net/jpg/02/99/47/44/240_F_299474459_3aaoyRsTpr9u0VBVPS1mEgQInMkcTaAM.jpg"  height="24" width="24" alt="">
+                    </a>
+                </button>
+            </td>
+            <td  class="text-center">
+                <button type="button" class="btn ">
+                    <a th:href="@{/Empresa/{id}/Movimientos (id=${empresa.id})}">
+                        <img src="https://cdn-icons-png.flaticon.com/128/2735/2735817.png" height="24" width="24" alt="">
+                    </a>
+                </button>
+            </td>
+            <td  class="text-center">
+                <button type="button" class="btn">
+                    <a th:href="@{/EditarEmpresa/{id}(id=${empresa.id})}">
+                        <img src="https://cdn-icons-png.flaticon.com/128/2921/2921222.png" height="24" width="24" alt="">
+                    </a>
+                </button>
+            </td>
+            <td  class="text-center">
+                <button type="button" class="btn ">
+                    <a th:href="@{/EliminarEmpresa/{id}(id=${empresa.id})}">
+                        <img src="https://cdn-icons-png.flaticon.com/128/458/458594.png" height="24" width="24" alt="">
+                    </a>
+                </button>
+            </td>
 
          </tr>
     </table>
