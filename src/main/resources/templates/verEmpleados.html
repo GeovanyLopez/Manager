@@ -7,36 +7,65 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <style>
-        a{
-            color:white;
-            font-family:verdana;
-
-        }
-        a:hover {
-            color: black;
-            text-decoration:none;
+         body{
+            font-size:16px;
+            font-family: monospace;
+         }
+        ul{
+            margin:20px;
         }
         h1{
-            text-align:center;
-            color:red;
-            font-family:verdana;
+            padding:12px;
+            margin:12px;
         }
-         .btn{
-            border-radius:10px;
+        .logout{
+            color:white;
+            text-decoration:none;
         }
+        .logout:hover{
+            color:black;
+             text-decoration:none;
+             border: solid 2px red;
+        }
+          table button a{
+            color:white;
+            text-decoration:none;
 
+        }
     </style>
 </head>
 <body>
 
+<ul class="nav justify-content-center">
+    <li class="nav-item">
+        <a th:href="@{/AgregarEmpleado}" class="nav-link active">Agregar Empleado</a>
+    </li>
+    <li class="nav-item">
+        <a th:href="@{/VerEmpresas}" class="nav-link ">Ver Empresas</a>
+    </li>
+    <li class="nav-item">
+        <a th:href="@{/VerMovimientos}" class="nav-link ">Ver Movimientos</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link disabled" href="#">Usuario: [[${#httpServletRequest.remoteUser}]]</a>
+    </li>
+    <li class="nav-item bg-danger text-white">
+        <a th:href="@{/logout}"  class="logout">Cerrar Sesion</a>
+    </li>
+</ul>
 <div class="container">
-    <p th:inline="text" class="text-right">User: [[${#httpServletRequest.remoteUser}]]</p>
-    <button type="button" class="btn btn-danger" style="float:right"><a th:href="@{/logout}">Cerrar Sesión</a></button>
-    <h1>Lista de Empleados</h1>
+<!--    <p th:inline="text" class="text-right">User: [[${#httpServletRequest.remoteUser}]]</p>-->
+<!--    <button type="button" class="btn btn-danger" style="float:right">-->
+<!--        <a th:href="@{/logout}">Cerrar Sesión</a>-->
+<!--    </button>-->
+
+    <h1 class="text-center bg-primary text-white ">Lista de Empleados</h1>
 
     <!--Crear tabla -->
     <table class="table table-bordered">
@@ -62,16 +91,35 @@
             <td th:if="${empleado.rol=='ROLE_USER'}">Operativo</td>
             <td th:if="${empleado.estado==true}">ACTIVO</td>
             <td th:if="${empleado.estado==false}">INACTIVO</td>
-            <td><button type="button" class="btn btn-info"><a th:href="@{/Empleado/{id}/Movimientos (id=${empleado.id})}">Ver</a></button></td>
-            <td><button type="button" class="btn btn-warning"><a th:href="@{/EditarEmpleado/{id}/(id=${empleado.id})}">Editar</a></button></td>
-            <td><button type="button" class="btn btn-danger"><a th:href="@{/EliminarEmpleado/{id}/(id=${empleado.id})}">Eliminar</a></button></td>
+            <td class="text-center">
+                <button type="button" class="btn ">
+                    <a th:href="@{/Empleado/{id}/Movimientos (id=${empleado.id})}">
+                        <img src="https://cdn-icons-png.flaticon.com/128/2735/2735817.png" height="24" width="24" alt="">
+                    </a>
+                </button>
+            </td>
+            <td class="text-center">
+                <button type="button" class="btn ">
+                    <a th:href="@{/EditarEmpleado/{id}/(id=${empleado.id})}">
+                        <img src="https://cdn-icons-png.flaticon.com/128/2921/2921222.png" height="24" width="24" alt="">
+                    </a>
+                </button>
+            </td>
+            <td>
+                <button type="button" class="btn">
+                    <a th:href="@{/EliminarEmpleado/{id}/(id=${empleado.id})}">
+                        <img src="https://cdn-icons-png.flaticon.com/128/458/458594.png" height="24" width="24" alt="">
+                    </a>
+                </button>
+            </td>
          </tr>
     </table>
 
     <!--creamos boton para agregar Empleados-->
-    <button type="button" class="btn btn-info"><a th:href="@{/AgregarEmpleado}">Agregar Nuevo Empleado</a></button>
-    <button type="button" class="btn btn-info"><a th:href="@{/VerEmpresas}">Ver Empresas</a></button>
-    <button type="button" class="btn btn-info"><a th:href="@{/VerMovimientos}">Ver Movimientos</a></button>
+<!--    <button type="button" class="btn btn-info"><a th:href="@{/AgregarEmpleado}">Agregar Nuevo Empleado</a></button>-->
+<!--    <button type="button" class="btn btn-info"><a th:href="@{/VerEmpresas}">Ver Empresas</a></button>-->
+<!--    <button type="button" class="btn btn-info"><a th:href="@{/VerMovimientos}">Ver Movimientos</a></button>-->
+
 </div>
 
 <script th:inline="javascript">
@@ -100,5 +148,8 @@
 
 </script>
 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 </html>
